@@ -229,7 +229,7 @@
     -->
     <Feature Id="ChefWSFeature" Title="!(loc.FeatureMainName)"
       Description="!(loc.FeatureMainDesc)"
-      Absent="disallow" AllowAdvertise="no" Level="1" ConfigurableDirectory="INSTALLLOCATION">
+      Level="1" ConfigurableDirectory="INSTALLLOCATION">
       <ComponentGroupRef Id="ProjectDir" />
       <ComponentRef Id="ChefWSPath" />
       <ComponentRef Id="ChefPSModulePath" />
@@ -356,6 +356,12 @@
       <Publish Dialog="LicenseAgreementDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg">1</Publish>
       <Publish Dialog="LicenseAgreementDlg" Control="Next" Event="NewDialog" Value="CustomizeDlg">
         <![CDATA[LicenseAccepted = "1"]]>
+      </Publish>
+
+      <!-- CustomizeDlg: Back button  - only one will fire due to conditionals-->
+      <Publish Dialog="CustomizeDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg" Order="1">Installed</Publish>
+      <Publish Dialog="CustomizeDlg" Control="Back" Event="NewDialog" Value="LicenseAgreementDlg" Order="2">
+        <![CDATA[NOT Installed]]>
       </Publish>
 
       <!-- CustomizeDlg: Next button -->
