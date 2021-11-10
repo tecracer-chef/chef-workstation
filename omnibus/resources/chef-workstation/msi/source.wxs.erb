@@ -65,17 +65,6 @@
       Impersonate="no"
       Return="ignore" />
 
-    <!-- Detect if ChefDK is installed - this upgrade GUID is specified in
-         chef-dk/omnibus/projects/chef-dk.rb. We don't look for a specific version -
-         we are incompatible with *any* DK version
-
-         This element will set the property CHEFDK_PRESENT, We use the CHEFDK_PRESENT property in
-         the installer UI, to determine whether or not to show the notification that ChefDK is
-         being replaced with Workstation.
-
-         With OnlyDetect set to 'no', it will also uninstall ChefDK as part of the actionns performed
-         during CW installation.
-      -->
     <Upgrade Id="AB1D6FBD-F9DC-4395-BDAD-26C4541168E7">
       <UpgradeVersion OnlyDetect="no" Minimum="0.0.0" IncludeMinimum="yes" Property="CHEFDK_PRESENT"/>
     </Upgrade>
@@ -268,7 +257,7 @@
     <Icon Id="cwsps.ico" SourceFile="Resources\assets\cwsps.ico"/>
     <Property Id="ARPPRODUCTICON" Value="cws16.ico" />
     <Property Id="ARPHELPLINK" Value="https://community.chef.io/tools/chef-workstation/" />
-    <Property Id="WIXUI_MINIMAL" Value="INSTALLLOCATION" />
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLLOCATION" />
     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="!(loc.LaunchChefWSApp)" />
     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1"/>
 
